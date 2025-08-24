@@ -24,18 +24,28 @@ typedef union {
     uint32_t raw;
     struct {
         uint8_t dpi_config;
+        uint8_t scroll_div_config;
     };
 } keyboard_config_t;
 
 extern keyboard_config_t keyboard_config;
 extern uint16_t          dpi_array[];
+extern float             scroll_div_array[];
 
 enum ploopy_keycodes {
     DPI_CONFIG = QK_KB_0,
     DRAG_SCROLL,
+    SCROLL_DIV_CONFIG,
+    HIRES_SCROLL,
+    SCROLL_SNAP_V,
+    SCROLL_SNAP_H,
 };
 
 bool encoder_update_user(uint8_t index, bool clockwise);
 bool encoder_update_kb(uint8_t index, bool clockwise);
 void toggle_drag_scroll(void);
+void toggle_hires_scroll(void);
+void toggle_scroll_snap_h(void);
+void toggle_scroll_snap_v(void);
 void cycle_dpi(void);
+void cycle_scroll_div(void);
